@@ -14,8 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/public/index', function () {
-    return view('welcome');
+Route::any('/public/foo', function () {
+	return 'foo';
+    // return view('welcome');
+});
+
+Route::any('user', function () {
+	return "user";
 });
 
 /*
@@ -29,6 +34,6 @@ Route::get('/public/index', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
+// Route::group(['middleware' => ['web']], function () {
+//     //
+// });

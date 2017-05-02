@@ -26,7 +26,8 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    // 'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +40,9 @@ return [
     |
     */
 
-    'url' => 'http://localhost',
+    // 'url' => 'http://localhost',
+    // 'url' => 'http://127.0.0.1/laravel',
+    'url' => 'http://localhost/laravel',
 
     /*
     |--------------------------------------------------------------------------
