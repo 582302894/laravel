@@ -9,19 +9,7 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::any('/public/foo', function () {
-	return 'foo';
-    // return view('welcome');
-});
-
-Route::any('user', function () {
-	return "user";
-});
+ */
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +20,18 @@ Route::any('user', function () {
 | it contains. The "web" middleware group is defined in your HTTP
 | kernel and includes session state, CSRF protection, and more.
 |
-*/
+ */
 
 // Route::group(['middleware' => ['web']], function () {
 //     //
 // });
+
+Route::any('index', ['uses' => "IndexController@index", 'as' => 'index']);
+
+Route::any('/', function () {
+    return redirect('index');
+});
+
+Route::any('welcome', function () {
+    return view('welcome');
+});
