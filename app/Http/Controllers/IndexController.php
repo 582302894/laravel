@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers;
 use App\User;
+use Illuminate\Support\Facades\Config;
 
 /**
  *

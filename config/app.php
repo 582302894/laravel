@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => ($_SERVER['HTTP_HOST']=='local.qq582302894.com') ? env('APP_ENV','production') : 'online' ,
 
     /*
     |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ return [
     */
 
     // 'debug' => env('APP_DEBUG', false),
-    'debug' => env('APP_DEBUG', true),
+    'debug' =>   env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
