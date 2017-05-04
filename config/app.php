@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'env' => ($_SERVER['HTTP_HOST']=='local.qq582302894.com') ? env('APP_ENV','production') : 'online' ,
+    'env' =>  env('APP_ENV','production')  ,
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return [
     |
     */
 
-    'key' => ($_SERVER['HTTP_HOST']=='local.qq582302894.com') ? env('APP_KEY') : 'yrf1uHPNbooaXSC5QGOKBbIKcb8ONNTi',
+    'key' =>  env('APP_KEY') ,
 
     'cipher' => 'AES-256-CBC',
 

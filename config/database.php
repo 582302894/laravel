@@ -52,11 +52,7 @@ return [
             'prefix'   => '',
         ],
 
-        'mysql' =>
-
-        ( Config::get('app.env') == 'local' ) ?
-
-         [
+        'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
             'database'  => env('DB_DATABASE', 'forge'),
@@ -67,21 +63,7 @@ return [
             'prefix'    => '',
             'strict'    => false,
             'engine'    => null,
-        ]
-        :
-        [
-            'driver'    => 'mysql',
-            'host'      => '127.0.0.1',
-            'database'  => 'laravel',
-            'username'  => 'root',
-            'password'  => 'sunhaobo',
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-            'strict'    => false,
-            'engine'    => null,
-        ]
-        ,
+        ],
 
         'pgsql' => [
             'driver'   => 'pgsql',
