@@ -94,7 +94,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => ($_SERVER['HTTP_HOST']=='local.qq582302894.com') ? env('APP_KEY') : 'yrf1uHPNbooaXSC5QGOKBbIKcb8ONNTi',
 
     'cipher' => 'AES-256-CBC',
 
