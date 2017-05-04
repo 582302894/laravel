@@ -22,14 +22,33 @@
 |
  */
 
-// Route::group(['middleware' => ['web']], function () {
-//     //
+//防止 SSX 攻击
+Route::group(['middleware' => ['web']], function () {
+
+    Route::any('index', ['uses' => "IndexController@index", 'as' => 'index']);
+    Route::any('user/login', ['uses' => "IndexController@index", 'as' => 'user/login1']);
+    Route::any('user/lists', ['uses' => "IndexController@lists", 'as' => 'user/lists']);
+    Route::any('user/edit/{id}', ['uses' => "UserController@create", 'as' => 'user/create']);
+    Route::any('user/delete/{id}', ['uses' => "UserController@delete", 'as' => 'user/delete']);
+    Route::any('user/create', ['uses' => "UserController@create", 'as' => 'user/create']);
+    Route::any('/', function () {
+        return redirect('index');
+    });
+});
+
+// Route::any('user/login', function () {
+//     return redirect('index');
 // });
 
-Route::any('index', ['uses' => "IndexController@index", 'as' => 'index']);
+Route::any('welcome', function () {
+    return view('welcome');
+});
+Route::any('header', function () {
+    return view('basic.header');
+});
 
-Route::any('/', function () {
-    return redirect('index');
+Route::any('footer', function () {
+    return view('basic.header');
 });
 
 Route::any('welcome', function () {
