@@ -31,6 +31,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::any('user/edit/{id}', ['uses' => "UserController@create", 'as' => 'user/create']);
     Route::any('user/delete/{id}', ['uses' => "UserController@delete", 'as' => 'user/delete']);
     Route::any('user/create', ['uses' => "UserController@create", 'as' => 'user/create']);
+    Route::any('user/login', ['uses' => "UserController@login", 'as' => 'user/login']);
+    Route::any('user/register', ['uses' => "UserController@register", 'as' => 'user/register']);
     Route::any('/', function () {
         return redirect('index');
     });

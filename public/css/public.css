@@ -13,3 +13,23 @@
 .mt5 {
     margin-top: 5px;
 }
+
+
+/*#2b3a41*/
+
+
+/*   https://work.smarchal.com/twbscolor/css/e74c3cc0392becf0f1ffbbbc0  修改的导航栏样式  begin  */
+
+
+/*   https://work.smarchal.com/twbscolor/css/e74c3cc0392becf0f1ffbbbc0  修改的导航栏样式  end  */
+
+.bgc-white {
+    background-color: white;
+}
+
+
+/*input number 去掉上下箭头*/
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+}

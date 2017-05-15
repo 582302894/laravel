@@ -4,3 +4,5 @@ Homestead.yaml
 Homestead.json
 .env
 laravel.log
+.tags
+.tags_sorted_by_file
