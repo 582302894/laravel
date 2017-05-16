@@ -1,4 +1,4 @@
-@if(Auth::check())
+
 @extends('basic.template1')
 
 @section('template1')
@@ -35,5 +35,3 @@
 </div>
 @endsection
 
-
-@endif

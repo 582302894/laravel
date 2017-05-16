@@ -39,7 +39,7 @@ class IpLog extends Model
 
         $log->ip      = $_SERVER['REMOTE_ADDR'];
         $log->url     = $_SERVER['REQUEST_URI'];
-        $log->referer = $_SERVER['HTTP_REFERER'];
+        $log->referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
 
         $log->type = $type;
 

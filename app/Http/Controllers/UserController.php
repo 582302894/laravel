@@ -12,9 +12,16 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
-    public function edit()
+    public function edit($args)
     {
+        if (!Auth::check()) {
+            return redirect()->route('user/login')->with('error', '请先登录');
+        }
 
+        $uid  = Auth::user()->first()->uid;
+        $user = User::find($uid);
+
+        return view('user.edit', ['user' => $user]);
     }
     public function delete()
     {
@@ -58,7 +65,7 @@ class UserController extends Controller
     public function login(Request $request)
     {
 
-        
+        // User::find(Auth::user()->all()->first()->uid)->name
         \App\IpLog::record('user.login');
 
         if ($request->isMethod('post')) {
@@ -87,11 +94,11 @@ class UserController extends Controller
 
             Auth::attempt(['account' => $account, 'password' => $password]);
 
-            if(!Auth::check()){
+            if (!Auth::check()) {
                 return redirect()->back()->with('error', '登录失败')->withInput(Input::all());
             }
 
-            return redirect()->back()->with('success', '登录成功')->withInput(Input::all());
+            return redirect()->route('index');
         }
         return view('user.login');
     }

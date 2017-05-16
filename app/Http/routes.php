@@ -28,9 +28,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::any('index', ['uses' => "IndexController@index", 'as' => 'index']);
     Route::any('user/login', ['uses' => "IndexController@index", 'as' => 'user/login1']);
     Route::any('user/lists', ['uses' => "IndexController@lists", 'as' => 'user/lists']);
-    Route::any('user/edit/{id}', ['uses' => "UserController@create", 'as' => 'user/create']);
+    Route::any('user/edit/{id}', ['uses' => "UserController@edit", 'as' => 'user/edit']);
     Route::any('user/delete/{id}', ['uses' => "UserController@delete", 'as' => 'user/delete']);
-    Route::any('user/create', ['uses' => "UserController@create", 'as' => 'user/create']);
+    Route::any('user/create/{id?}', ['uses' => "UserController@create", 'as' => 'user/create']);
     Route::any('user/login', ['uses' => "UserController@login", 'as' => 'user/login']);
     Route::any('user/register', ['uses' => "UserController@register", 'as' => 'user/register']);
     Route::any('/', function () {
@@ -55,4 +55,10 @@ Route::any('footer', function () {
 
 Route::any('welcome', function () {
     return view('welcome');
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });
