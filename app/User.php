@@ -12,6 +12,7 @@ class User extends Model
     protected $table      = 'user';
     protected $primaryKey = 'id';
     public $timestamps    = true;
+    protected $fillable   = ['name', 'age', 'sex', 'status', 'year', 'month', 'day', 'photo'];
 
     protected function getDateFormat()
     {

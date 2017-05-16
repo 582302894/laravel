@@ -1,4 +1,6 @@
+@if(Auth::check())
 @extends('basic.template1')
+
 @section('template1')
 <div class="container-fluid">
     <div class="row">
@@ -32,3 +34,6 @@
     </div>
 </div>
 @endsection
+
+
+@endif

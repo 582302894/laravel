@@ -5,7 +5,7 @@
             ×
         </span>
     </button>
-    <div class="message-success">
+    <div class="message-success" success="{{ Session::get('success') }}">
         {{ Session::get('success') }}
     </div>
 </div>
@@ -17,7 +17,7 @@
             ×
         </span>
     </button>
-    <div class="message-error">
+    <div class="message-error" error="{{ Session::get('error') }}">
         {{ Session::get('error') }}
     </div>
 </div>
@@ -28,13 +28,12 @@
 <div class="hide hide-error" error="{{ current($value) }}" key="{{ $key }}">
 </div>
 @endforeach
-  
+
 @endif
 <!-- end -->
 <script type="text/javascript">
-
     $(function(){
-        
+
         if($('.hide-error').length>0){
             var errors=$('.hide-error');
             errors.each(function(){
@@ -53,6 +52,22 @@
                     control.parent().find('.help-block').remove();
                 });
             });
+        }
+
+
+        if($('.message-success').length>0){
+            var id=setInterval(function(){
+                $('.message-success').parent().remove();
+                clearInterval(id);
+            },2000);
+        }
+
+
+        if($('.message-error').length>0){
+            var id=setInterval(function(){
+                $('.message-error').parent().remove();
+                clearInterval(id);
+            },2000);
         }
    })
 </script>

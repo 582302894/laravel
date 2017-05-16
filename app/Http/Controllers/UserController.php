@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Controllers;
 use App\User;
 use App\UserAuth;
@@ -9,7 +8,7 @@ use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
@@ -59,22 +58,21 @@ class UserController extends Controller
     public function login(Request $request)
     {
 
+        
+        \App\IpLog::record('user.login');
 
         if ($request->isMethod('post')) {
 
-           
-            
-            
+            $account   = $request->input('account');
+            $password  = $request->input('password');
+            $validator = \Illuminate\Support\Facades\Validator::make($request->input(), [
+                'account'  => 'required',
+                'password' => 'required',
+            ]);
 
-            $validator=\Illuminate\Support\Facades\Validator::make($request->input(),[
-                    'account'=>'required',
-                    'password'=>'required',
-                ],Config::get('required'),Config::get('form'));
-            
-            if($validator->fails()){
+            if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput(Input::all());
             }
-
 
             $auth = UserAuth::where([
                 'account' => $request->input('account'),
@@ -83,14 +81,28 @@ class UserController extends Controller
                 return redirect()->back()->with('error', '用户不存在')->withInput(Input::all());
             }
 
-            if (Hash::check($request->input('password'), $auth->password)) {
-                return redirect()->back()->with('success', '登录成功')->withInput(Input::all());
-            } else {
-                return redirect()->back()->with('error', '密码错误')->withInput(Input::all());                
+            if (!Hash::check($request->input('password'), $auth->password)) {
+                return redirect()->back()->with('error', '密码错误')->withInput(Input::all());
             }
-            dd($request->input('password'));
+
+            Auth::attempt(['account' => $account, 'password' => $password]);
+
+            if(!Auth::check()){
+                return redirect()->back()->with('error', '登录失败')->withInput(Input::all());
+            }
+
+            return redirect()->back()->with('success', '登录成功')->withInput(Input::all());
         }
         return view('user.login');
+    }
+
+    /**
+     * [guard description]
+     * @return [type] [description]
+     */
+    protected function guard()
+    {
+        return Auth::guard('guard-name');
     }
 
     /**
@@ -99,37 +111,42 @@ class UserController extends Controller
      */
     public function register(Request $request)
     {
-
         if ($request->isMethod('post')) {
 
-
-            $validator=\Illuminate\Support\Facades\Validator::make($request->input(),[
-                'account'=>'required',
-                'password'=>'required',
-                'password_confirmation'=>'required|comfirmed'
-                ],[],Config::get('form'));
-            if($validator->fails()){
+            $validator = \Illuminate\Support\Facades\Validator::make($request->input(), [
+                'account'               => 'required',
+                'password'              => 'required|confirmed',
+                'password_confirmation' => 'required',
+            ]);
+            if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput(Input::all());
             }
 
-            $account=$request->account;
-            $password=$request->password;
-            $password_confirmation=$request->password_confirmation;
-            $name=$request->name;
-            $age=$request->age;
-            $sex=$request->sex;
+            $account               = $request->account;
+            $password              = $request->password;
+            $password_confirmation = $request->password_confirmation;
 
-            $auth=UserAuth::where([
-                'account'=>$account,
-                'type'=>1,
-                ])->first();
+            $auth = UserAuth::where([
+                'account' => $account,
+                'type'    => 1,
+            ])->first();
 
-
-            if($auth!=null){
-                return redirect()->back()->with('error','该帐号名称已存在')->withInput(Input::all());
+            if ($auth != null) {
+                return redirect()->back()->with('error', '该帐号名称已存在')->withInput(Input::all());
             }
 
-            dd($request);
+            $user = User::create([
+                'name' => $account,
+            ]);
+
+            UserAuth::create([
+                'account'  => $account,
+                'password' => Hash::make($password),
+                'uid'      => $user->id,
+                'type'     => 1,
+            ]);
+
+            return redirect()->route('user/login')->with('success', '注册成功')->withInput(Input::all());
 
         }
 

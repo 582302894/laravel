@@ -24,31 +24,7 @@
                 <label for="">
                     确认密码
                 </label>
-                <input class="form-control" id="password_confirmation" name="password_confirmation" placeholder="确认密码" type="password_confirmation" value="{{ old('password_confirmation') }}"/>
-            </div>
-            <div class="form-group">
-                <label for="">
-                    姓名/昵称
-                </label>
-                <input class="form-control" id="name" name="name" placeholder="姓名/昵称" type="text" value="{{ old('name') }}"/>
-            </div>
-            <div class="form-group">
-                <label for="">
-                    年龄
-                </label>
-                <input class="form-control" id="age" name="age" placeholder="年龄（数字）" type="number" value="{{ old('age') }}"/>
-            </div>
-            <div class="form-group">
-                <div class="radio">
-                    <label>
-                        <input checked="" name="sex" type="radio" value="1"/>
-                        男
-                    </label>
-                    <label>
-                        <input name="sex" type="radio" value="2"/>
-                        女
-                    </label>
-                </div>
+                <input class="form-control" id="password_confirmation" name="password_confirmation" placeholder="确认密码" type="password" value="{{ old('password_confirmation') }}"/>
             </div>
             <button class="btn btn-primary" type="submit">
                 注册
