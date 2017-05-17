@@ -8,7 +8,7 @@
 	@if(Auth::check())
 <li class="dropdown">
     <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-        {{ $user=\App\User::find(Auth::user()->all()->first()->uid)->name}}
+        {{ $user=\App\User::find(Auth::user()->uid)->name}}
         <span class="caret">
         </span>
     </a>

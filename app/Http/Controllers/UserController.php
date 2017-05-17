@@ -18,7 +18,7 @@ class UserController extends Controller
             return redirect()->route('user/login')->with('error', '请先登录');
         }
 
-        $uid  = Auth::user()->first()->uid;
+        $uid  = Auth::user()->uid;
         $user = User::find($uid);
 
         return view('user.edit', ['user' => $user]);
@@ -93,7 +93,6 @@ class UserController extends Controller
             }
 
             Auth::attempt(['account' => $account, 'password' => $password]);
-
             if (!Auth::check()) {
                 return redirect()->back()->with('error', '登录失败')->withInput(Input::all());
             }

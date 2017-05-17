@@ -33,6 +33,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::any('user/create/{id?}', ['uses' => "UserController@create", 'as' => 'user/create']);
     Route::any('user/login', ['uses' => "UserController@login", 'as' => 'user/login']);
     Route::any('user/register', ['uses' => "UserController@register", 'as' => 'user/register']);
+    Route::any('upload', ['uses' => "FileController@upload", 'as' => 'file/upload']);
+    Route::any('uploadimg', ['uses' => "FileController@uploadimg", 'as' => 'file/uploadimg']);
     Route::any('/', function () {
         return redirect('index');
     });

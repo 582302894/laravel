@@ -8,6 +8,10 @@
             <form class="form-horizontal" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
+                    <img src="{{ $user->photo }}" alt="" class="col-sm-3 col-sm-offset-2 col-xs-4 col-xs-offset-4 default-head upload-img" for="hidden_img" />
+                    <input type="hidden" name="photo" value="{{$user->photo}}"  id="hidden_img"/>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label" for="name">
                         姓名
                     </label>
@@ -16,6 +20,7 @@
                     </div>
                 </div>
                 
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="age">
                         年龄
@@ -54,3 +59,4 @@
     </div>
 </div>
 @endsection
+
