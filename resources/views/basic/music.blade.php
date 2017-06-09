@@ -19,7 +19,7 @@ $muiscs = array_splice($muiscs, 0, 4);
 ?>
 <style type="text/css">
     .music-box{
-	position: absolute;
+	position: fixed;
 	z-index: 99;
 	width: 100%;height: 100%;
 	background: white;
