@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-12 col-xs-12 text-center">
             @foreach($log->other['sub_images'] as $key => $img)
-            <img class="mb10" src="{{$img['url']}}"/>
+            <img class="mb10 max-width-90" src="{{$img['url']}}"/>
             <br/>
             <span>
                 {{$log->other['sub_abstracts'][$key]}}

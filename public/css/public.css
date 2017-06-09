@@ -123,3 +123,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     margin-right: 0;
     margin-left: 0;
 }
+.max-width-90{
+    max-width: 90%;
+}
