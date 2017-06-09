@@ -42,8 +42,9 @@ $muiscs = array_splice($muiscs, 0, 4);
 </style>
 <div class="music-box">
     @foreach($muiscs as $music)
-    <iframe border="0" frameborder="no" height="140" marginheight="0" marginwidth="0" src="//music.163.com/outchain/player?type=2&id={{$music['id']}}&auto=0&height=140" width="330">
-    </iframe>
+    	<input type="hidden" value="{{$music['id']}}" class="music-id">
+	   <!--  <iframe border="0" frameborder="no" height="140" marginheight="0" marginwidth="0" src="//music.163.com/outchain/player?type=2&id={{$music['id']}}&auto=0&height=140" width="330">
+	    </iframe> -->
     <!-- <div height="140px" sytle="width:140px!important;">
         <img height="140px" src="{{$music['album']['picUrl']}}" style="margin: 0 auto;"/>
     </div> -->
@@ -56,6 +57,9 @@ $muiscs = array_splice($muiscs, 0, 4);
 </script>
 <script type="text/javascript">
 $(function(){
+	$('.music-id').each(function(){
+		$(this).after(' <iframe border="0" frameborder="no" height="140" marginheight="0" marginwidth="0" src="//music.163.com/outchain/player?type=2&id='+$(this).val()+'&auto=0&height=140" width="330"></iframe>');
+	});
 	var i=0;
 	$('.pole').click(function(){
 		i++;
