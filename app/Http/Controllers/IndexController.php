@@ -20,6 +20,7 @@ class IndexController extends Controller
         }
 
         foreach ($logs as $key => $log) {
+
             $size              = getimagesize($log['content']['image_url']);
             $logs[$key]['img'] = [
                 'width'  => $size[0],
@@ -41,12 +42,18 @@ class IndexController extends Controller
         ];
         foreach ($logs as $key => $log) {
             
+            $temp=$log->content;
+
+            $temp['image_url']=Net::saveImg($temp['image_url']);
+            $log->content=$temp;
+
             asort($sortHeight);
            
             $num=array_search(current($sortHeight), $sortHeight);
             $pictures[$num][]=$log;
             $sortHeight[$num]+=(100/$log['img']['width'])*$log['img']['height'];
         }
+
 
         if($sortHeight[1]>$sortHeight[2]){
             $temp=$pictures[2];

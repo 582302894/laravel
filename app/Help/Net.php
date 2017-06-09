@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Help;
+use Illuminate\Support\Facades\Storage;
 
 class Net
 {
@@ -49,4 +50,25 @@ class Net
         return ($data);
     }
 
+
+    /**
+     * save img in local
+     * @param  [type] $url [description]
+     * @return [type]      [description]
+     */
+    public static function saveImg($url){
+
+        $key=md5($url);
+
+        if(Storage::disk('public')->exists("img/{$key}")){
+            return asset("storage/img/{$key}");
+        }
+
+        Storage::disk('public')->put("img/{$key}", file_get_contents($url));
+
+        return $url;
+
+
+        // return $url;
+    }
 }
