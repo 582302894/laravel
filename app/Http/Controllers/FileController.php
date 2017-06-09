@@ -13,15 +13,11 @@ class FileController extends Controller
     // 文件上传方法
     public function upload(Request $request)
     {
-        $path=Storage::disk('public')->put('file.txt', 'Contents');
-        echo '<pre>';
-        var_dump(asset('storage/file.txt'));
-        echo '</pre>';exit();
         // dd(asset('storage/avatars/S6bFUfcrdXDFePTAt08zJfnhunrBj5Gv60ogHfjv.png'));
         if ($request->isMethod('post')) {
-            $path=Storage::disk('public')->put('file.txt', 'Contents');
+            $bool=Storage::disk('public')->put('file.txt', file_get_contents($request->file('picture')->getRealPath()));
             // $path = Storage::disk('public')->put('public/avatars', file_get_contents($request->file('picture')->getRealPath()));
-            dd($path);
+            dd($bool);
             $file = $request->file('picture');
             // 文件是否上传成功
             if ($file->isValid()) {
