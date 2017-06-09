@@ -118,3 +118,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     margin-right: 0;
     margin-left: 0;
 }
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
