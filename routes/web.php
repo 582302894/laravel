@@ -64,6 +64,9 @@ Route::any('welcome', function () {
 Route::any('header', function () {
     return view('basic.header');
 });
+Route::any('basic', function () {
+    return view('basic.basic');
+});
 
 Route::any('footer', function () {
     return view('basic.header');
