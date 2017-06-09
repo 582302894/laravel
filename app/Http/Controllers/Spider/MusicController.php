@@ -20,7 +20,8 @@ class MusicController extends Controller
 
 
 
-		if(Session::has('music')){
+
+		if(!Session::has('music')){
 			$json=Storage::disk('public')->get('music.json');
 			Session::put('music',$json);
 		}else{
