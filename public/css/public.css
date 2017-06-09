@@ -1,0 +1,114 @@
+.mt20 {
+    margin-top: 20px;
+}
+
+.ml20 {
+    margin-left: 20px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.m10 {
+    margin: 10px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.m0 {
+    margin: 0;
+}
+
+.p0 {
+    padding: 0;
+}
+
+.p10 {
+    padding: 10px;
+}
+
+.pl20 {
+    padding-right: 20px;
+}
+
+.min-height768 {
+    min-height: 768px;
+}
+
+
+/*#2b3a41*/
+
+
+/*   https://work.smarchal.com/twbscolor/css/e74c3cc0392becf0f1ffbbbc0  修改的导航栏样式  begin  */
+
+
+/*   https://work.smarchal.com/twbscolor/css/e74c3cc0392becf0f1ffbbbc0  修改的导航栏样式  end  */
+
+.bgc-white {
+    background-color: white;
+}
+
+
+/*input number 去掉上下箭头*/
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+}
+
+
+/*.navbar-default {
+    background-color: rgba(30, 30, 30, .4);
+    border: 0px;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar {
+    border-radius: 0;
+}
+.dropdown,*/
+
+.border-1 {
+    border: 1px solid black !important;
+}
+
+.container-fluid {
+    margin: 0;
+    padding: 0;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.text-right {
+    text-align: right!important;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand{
+    margin-left: 0px;
+}
