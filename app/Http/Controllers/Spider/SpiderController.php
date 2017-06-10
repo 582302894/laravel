@@ -102,7 +102,7 @@ class SpiderController extends Controller
 
             $result = array();
             if (isset($keys)) {
-                $result = SpiderLog::whereIn('key', $keys)->pluck('key', 'key')->all();
+                $result = SpiderLog::whereIn('key', $keys)->pluck('key')->all();
             }
             foreach ($logs as $key => $log) {
                 if (!in_array($key, $result)) {
