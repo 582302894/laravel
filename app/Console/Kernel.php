@@ -4,7 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-
+use App\Http\Controllers\Spider\SpiderController;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -26,6 +26,10 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->call(function(){
+            $spider=new SpiderController();
+            $spider->picture();
+        })->everyTenMinutes();
     }
 
     /**
