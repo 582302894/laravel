@@ -13,7 +13,9 @@ $muiscs = [];
 if (!empty($json)) {
     $muiscs = json_decode($json, true);
 }
-
+unset($muiscs[5]);
+unset($muiscs[4]);
+unset($muiscs[1]);
 $muiscs = array_splice($muiscs, 0, 4);
 
 ?>

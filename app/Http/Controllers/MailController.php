@@ -11,12 +11,13 @@ class MailController extends Controller
 {
     public function test()
     {
-
+        // dd(Config::get('mail'));
         $name = '学院君';
         $flag = Mail::send('emails.test', ['name' => $name], function ($message) {
             $to = '1125477664@qq.com';
             $message->to($to)->subject('测试邮件');
         });
+        dd($flag);
         if ($flag) {
             echo '发送邮件成功，请查收！';
         } else {
@@ -35,7 +36,7 @@ class MailController extends Controller
             $message->to($to)->subject('邮件验证码');
         });
 
-        if ($flag) {
+        if ($flag=='') {
             Session::put("mail_code_{$mail}", $code);
             return response()->json(['status' => 'success', 'message' => '发送邮件成功，请查收！']);
         } else {
