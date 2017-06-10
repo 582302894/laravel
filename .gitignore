@@ -11,4 +11,3 @@ npm-debug.log
 laravel.log
 .tags
 .tags_sorted_by_file
-/config/mail.php
