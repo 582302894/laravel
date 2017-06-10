@@ -26,23 +26,44 @@
             <img src="{{ asset('img/haohan_xingyun_yuzhou-0007.jpg') }}" height="300px" style="margin-left: -598px"/>
 
         </div> -->
-        @foreach($pictures as $picture)
-        <div class="col-md-3 col-sm-6 col-xs-6 m0 p10 position-relative overflow-hidden">
-            @foreach($picture as $log)
-            <div class="mb15 spider-img">
-                <div class="hide-box-img hide">
-                    <span>
-                        {{ $log['content']['title'] }}
-                    </span>
-                    <a href="{{ url('index/picture',['key'=>$log['id']]) }}">
-                        查看
-                    </a>
+        <div class="col-md-6 col-sm-6 col-xs-6 m0 p0">
+            @foreach($one as $picture)
+            <div class="col-md-6 col-sm-12 col-xs-12 m0 p10 position-relative overflow-hidden">
+                @foreach($picture as $log)
+                <div class="mb15 spider-img">
+                    <div class="hide-box-img hide">
+                        <span>
+                            {{ $log['content']['title'] }}
+                        </span>
+                        <a href="{{ url('index/picture',['key'=>$log['id']]) }}">
+                            查看
+                        </a>
+                    </div>
+                    <img class="m0 p0" src="{{ $log['content']['image_url'] }}" width="100%"/>
                 </div>
-                <img class="m0 p0" src="{{ $log['content']['image_url'] }}" width="100%"/>
+                @endforeach
             </div>
             @endforeach
         </div>
-        @endforeach
+        <div class="col-md-6 col-sm-6 col-xs-6 m0 p0">
+            @foreach($two as $picture)
+            <div class="col-md-6 col-sm-12 col-xs-12 m0 p10 position-relative overflow-hidden">
+                @foreach($picture as $log)
+                <div class="mb15 spider-img">
+                    <div class="hide-box-img hide">
+                        <span>
+                            {{ $log['content']['title'] }}
+                        </span>
+                        <a href="{{ url('index/picture',['key'=>$log['id']]) }}">
+                            查看
+                        </a>
+                    </div>
+                    <img class="m0 p0" src="{{ $log['content']['image_url'] }}" width="100%"/>
+                </div>
+                @endforeach
+            </div>
+            @endforeach
+        </div>
         <div class="col-md-12 col-xs-12">
             <div class="pull-center">
                 {{ $logs->render() }}

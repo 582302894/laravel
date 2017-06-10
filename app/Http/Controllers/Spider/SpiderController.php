@@ -73,29 +73,36 @@ class SpiderController extends Controller
             Session::put('spider_picture_time', time());
             Session::put('spider_picture_data', $pictures);
 
-            if(!isset($pictures['data'])){
+            if (!isset($pictures['data'])) {
                 dd($pictures);
             }
 
-            $logs=[];
+            $logs = [];
             foreach ($pictures['data'] as $key => $picture) {
-                $log             = new SpiderLog();
-                $log->content    = json_encode($picture);
-                $log->key        = md5($picture['title']);
-                $keys[]          = $log->key;
-                $log->type       = 2;
-                $groupId=$picture['group_id'];
-                $listsStr = $tout->picturelists($groupId);
+                $size = getimagesize($picture['image_url']);
 
-                $log->other=$listsStr;
+                $picture['img'] = [
+                    'width'  => $size[0],
+                    'height' => $size[1],
+                ];
 
+                $log          = new SpiderLog();
+                $log->content = json_encode($picture);
+                $log->key     = md5($picture['title']);
+                $keys[]       = $log->key;
+                $log->type    = 2;
+                $groupId      = $picture['group_id'];
+                $listsStr     = $tout->picturelists($groupId);
+
+                $log->other = $listsStr;
 
                 $logs[$log->key] = $log;
+
             }
 
-            $result=array();
+            $result = array();
             if (isset($keys)) {
-                $result = SpiderLog::whereIn('key', $keys)->pluck('key','key')->all();
+                $result = SpiderLog::whereIn('key', $keys)->pluck('key', 'key')->all();
             }
             foreach ($logs as $key => $log) {
                 if (!in_array($key, $result)) {
@@ -104,15 +111,16 @@ class SpiderController extends Controller
                 }
             }
 
-            dd($pictures);
+            dd($logs);
 
         } else {
             $videos = Session::get('spider_picture_data');
         }
     }
 
-    public function picturelists($id){
-        $tout   = new ToutController();
+    public function picturelists($id)
+    {
+        $tout  = new ToutController();
         $lists = $tout->picturelists($id);
     }
 }

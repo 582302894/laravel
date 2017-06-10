@@ -70,7 +70,12 @@ class IndexController extends Controller
             $pictures[2] = $pictures[1];
             $pictures[1] = $temp;
         }
-        return view('public.index', ['pictures' => $pictures, 'logs' => $logs]);
+        // return view('public.index', ['pictures' => $pictures, 'logs' => $logs]);
+        return view('public.index', [
+            'one'  => [$pictures[1], $pictures[2]],
+            'two'  => [$pictures[3], $pictures[4]],
+            'logs' => $logs,
+        ]);
     }
     public function lists()
     {
