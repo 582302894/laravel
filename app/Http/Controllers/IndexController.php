@@ -14,18 +14,28 @@ class IndexController extends Controller
 
     public function index()
     {
-        $logs = SpiderLog::where(['type' => 2])->orderBy('id','desc')->paginate(20);
+        $logs = SpiderLog::where(['type' => 2])->orderBy('id', 'desc')->paginate(20);
         foreach ($logs as $key => $value) {
             $logs[$key]['content'] = json_decode($value['content'], true);
-        }
 
-        foreach ($logs as $key => $log) {
+            if (!isset($logs[$key]['content']['img'])) {
+                $size        = getimagesize($logs[$key]['content']['image_url']);
+                $temp        = $logs[$key]['content'];
+                $temp['img'] = [
+                    'width'  => $size[0],
+                    'height' => $size[1],
+                ];
+                $logs[$key]['content'] = $temp;
 
-            $size              = getimagesize($log['content']['image_url']);
-            $logs[$key]['img'] = [
-                'width'  => $size[0],
-                'height' => $size[1],
-            ];
+                $log          = $logs[$key];
+                $log->content = json_encode($log->content);
+                $log->save();
+
+                $logs[$key]['img'] = $temp['img'];
+            } else {
+                $logs[$key]['img'] = $logs[$key]['content']['img'];
+            }
+
         }
 
         $pictures = [
@@ -40,28 +50,27 @@ class IndexController extends Controller
             3 => 2,
             4 => 3,
         ];
-        foreach ($logs as $key => $log) {
-            
-            $temp=$log->content;
 
-            $temp['image_url']=Net::saveImg($temp['image_url']);
-            $log->content=$temp;
+        foreach ($logs as $key => $log) {
+
+            $temp = $log->content;
+
+            $temp['image_url'] = Net::saveImg($temp['image_url']);
+            $log->content      = $temp;
 
             asort($sortHeight);
-           
-            $num=array_search(current($sortHeight), $sortHeight);
-            $pictures[$num][]=$log;
-            $sortHeight[$num]+=(100/$log['img']['width'])*$log['img']['height'];
+
+            $num              = array_search(current($sortHeight), $sortHeight);
+            $pictures[$num][] = $log;
+            $sortHeight[$num] += (100 / $log['img']['width']) * $log['img']['height'];
         }
 
-
-        if($sortHeight[1]>$sortHeight[2]){
-            $temp=$pictures[2];
-            $pictures[2]=$pictures[1];
-            $pictures[1]=$temp;            
+        if ($sortHeight[1] > $sortHeight[2]) {
+            $temp        = $pictures[2];
+            $pictures[2] = $pictures[1];
+            $pictures[1] = $temp;
         }
-
-        return view('public.index', ['pictures' => $pictures,'logs'=>$logs]);
+        return view('public.index', ['pictures' => $pictures, 'logs' => $logs]);
     }
     public function lists()
     {
@@ -87,15 +96,16 @@ class IndexController extends Controller
 
     }
 
-    public function picture($id=0){
+    public function picture($id = 0)
+    {
 
-        $log=SpiderLog::find($id);
-        $log->content=json_decode($log->content,true);
-        $log->other=json_decode($log->other,true);
+        $log          = SpiderLog::find($id);
+        $log->content = json_decode($log->content, true);
+        $log->other   = json_decode($log->other, true);
         // echo '<pre>';
         // var_dump($log);
         // echo '</pre>';
         // dd($log);
-        return view('index.picture',['log'=>$log]);
+        return view('index.picture', ['log' => $log]);
     }
 }
