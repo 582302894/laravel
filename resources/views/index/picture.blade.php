@@ -23,6 +23,10 @@
             <br/>
             @endforeach
         </div>
+
+        <div class="col-md-12 col-xs-12 text-right">
+            <span>{{date('Y-m-d H:i:s',$log->created_at)}}</span>
+        </div>
     </div>
     <div class="visible-md visible-lg col-md-2">
         @include('basic.time')
