@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Spider\ToutController;
 use App\SpiderLog;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class SpiderController extends Controller
 {
@@ -108,7 +109,28 @@ class SpiderController extends Controller
 
                 $logs[$log->key] = $log;
 
+                $imgs[$log->key]=[
+                    $log->key,
+                    $picture['title'],
+                    $picture['image_url'],
+                ];
 
+
+            }
+
+
+            if(isset($imgs)){
+                $year=date('Y');
+                $month=date('m');
+                $day=date('d');
+
+                $filename=date('His');
+
+                $path = "spider/picture/{$year}/{$month}/{$day}/".$filename;
+                
+                $content=json_encode($imgs);
+                $bool=Storage::disk('public')->put($path, $content);
+               
             }
             $result = array();
             if (isset($keys)) {

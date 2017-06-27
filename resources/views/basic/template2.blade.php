@@ -50,8 +50,13 @@
 
 
 @section('content')
-    <div class="min-height768">
-    @yield('template1')
+    <div class="row min-height768">
+        <div class="col-md-2" style="">
+            <a href="{{ url('admin/picturelogs') }}">图片同步日志</a><br>
+        </div>
+        <div class="col-md-10">
+            @yield('template2')
+        </div> 
     </div>
     @include('basic.footer')
 @endsection

@@ -51,6 +51,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::any('spider/picture', ['uses' => 'Spider\SpiderController@picture']);
     Route::any('spider/picturelists/{id}', ['uses' => 'Spider\SpiderController@picturelists']);
     Route::any('logout',['uses'=>'UserController@logout','logout']);
+
+    Route::any('admin',['uses'=>'AdminController@lists']);
+    Route::any('admin/picturelogs/{time?}',['uses'=>'AdminController@picturelogs']);
+    Route::any('admin/picturelog/{dir}',['uses'=>'AdminController@picturelog']);
 });
 
 // Route::any('user/login', function () {
