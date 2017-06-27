@@ -55,6 +55,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::any('admin',['uses'=>'AdminController@lists']);
     Route::any('admin/picturelogs/{time?}',['uses'=>'AdminController@picturelogs']);
     Route::any('admin/picturelog/{dir}',['uses'=>'AdminController@picturelog']);
+
+
 });
 
 // Route::any('user/login', function () {
@@ -92,3 +94,6 @@ Route::group(['middleware' => 'web'], function () {
 Route::any('spider/test', ['uses' => 'Spider\SpiderController@test']);
 Route::any('spider/tout/video', ['uses' => 'Spider\ToutController@video']);
 Route::any('music',['uses'=>'Spider\MusicController@music','music']);
+
+
+Route::any('sunhaobo',['uses'=>'ShbController@index']);
