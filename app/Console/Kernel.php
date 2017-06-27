@@ -5,6 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Http\Controllers\Spider\SpiderController;
+use App\Help\Net;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -31,6 +32,12 @@ class Kernel extends ConsoleKernel
             $spider->picture();
             // return 'hello';
         })->everyMinute();
+
+        $schedule->call(function(){
+           $html=https('http://www.qq582302894.com');
+           echo strlen($html);
+        })->hourly();
+
     }
 
     /**
