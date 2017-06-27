@@ -29,6 +29,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function(){
             $spider=new SpiderController();
             $spider->picture();
+            // return 'hello';
         })->everyMinute();
     }
 

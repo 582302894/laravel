@@ -67,6 +67,11 @@ class ToutController extends Controller
         $url="http://www.toutiao.com/group/{$id}";
         $return=Net::https($url,'GET','',[],true);
         preg_match('/{"(.*)};/', $return,$match);
+
+        if(!isset($match[0])){
+            return false;
+        }
+
         $match[0]=preg_replace('/;$/', '', $match[0]);
         
         return $match[0];

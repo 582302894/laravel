@@ -66,6 +66,7 @@ class SpiderController extends Controller
 
     public function picture()
     {
+
         if (Session::has('spider_picture_time') || Session::get('spider_picture_data') == null || Session::get('spider_picture_time') < strtotime('-10 minute')) {
             $tout     = new ToutController();
             $pictures = $tout->picture();
@@ -78,8 +79,14 @@ class SpiderController extends Controller
             }
 
             $logs = [];
+            $keys = [0];
             foreach ($pictures['data'] as $key => $picture) {
-                $size = getimagesize($picture['image_url']);
+                try {
+                    $size = getimagesize($picture['image_url']);    
+                } catch (Exception $e) {
+                    continue;
+                }
+
 
                 $picture['img'] = [
                     'width'  => $size[0],
@@ -92,14 +99,17 @@ class SpiderController extends Controller
                 $keys[]       = $log->key;
                 $log->type    = 2;
                 $groupId      = $picture['group_id'];
-                $listsStr     = $tout->picturelists($groupId);
 
+                $listsStr     = $tout->picturelists($groupId);
+                if($listsStr==false){
+                    continue;
+                }
                 $log->other = $listsStr;
 
                 $logs[$log->key] = $log;
 
-            }
 
+            }
             $result = array();
             if (isset($keys)) {
                 $result = SpiderLog::whereIn('key', $keys)->pluck('key')->all();
@@ -111,7 +121,7 @@ class SpiderController extends Controller
                 }
             }
 
-            dd($logs);
+            // dd($logs);
 
         } else {
             $videos = Session::get('spider_picture_data');
