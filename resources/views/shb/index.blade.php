@@ -39,6 +39,7 @@ body{
     background-color: #283a46 !important;
 }
 .right{
+    padding-top: 10px;
     background-color: #e7e7e7 !important;
 }
 .personal-experience{
