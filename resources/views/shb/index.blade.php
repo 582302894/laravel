@@ -172,7 +172,7 @@ body p,body a{
                         </div>
                     </div>
                 </div>
-                <div class="skill">
+                <!-- <div class="skill">
                     <p class="skill-label-name">
                         c,java
                     </p>
@@ -180,10 +180,10 @@ body p,body a{
                         <div class="skill-label-num" style="width: 50%">
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="skill">
                     <p class="skill-label-name">
-                        sql,mysel
+                        sql,mysql
                     </p>
                     <div class="col-md-12 col-sm-12 skill-label">
                         <div class="skill-label-num" style="width: 80%">
@@ -296,7 +296,7 @@ body p,body a{
                         在上海内推网（www.neitui.me）担任php后台开发人员，使用老大自己编写的框架，网站为sae云空间，开发环境为windows环境，sae模拟服务器
                     </p>
                     <p class="experience-content">
-                        在内推网工作期间参与过推+项目、简历导师项目、网站改版、网站搜索优化，公司代码svn管理改为git管理
+                        在内推网工作期间参与过推+项目、简历导师项目、网站改版、网站搜索优化，促成svn代码管理改为git管理
                     </p>
                     <p class="experience-content">
                         期间使用过angularjs，微信公众平台扫码关注，微信场景二维码触发，微信消息触发，使用了缓存+elasticsearch优化搜索结果，优化了搜索逻辑
@@ -321,6 +321,9 @@ body p,body a{
                     </p>
                     <p class="experience-time">
                         2017-6 - 2016-7
+                    </p>
+                    <p class="experience-content">
+                        阿里云香港服务器
                     </p>
                     <p class="experience-content">
                         个人网站实在不知道做点什么好，从今日头条爬了一点数据，增加了注册功能，个人头像文件上传，邮件在阿里云服务器暂时还发不出去
