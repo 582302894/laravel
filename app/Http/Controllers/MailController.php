@@ -11,6 +11,9 @@ class MailController extends Controller
 {
     public function test()
     {
+
+
+        dd(stream_socket_client('smtp.163.com:25',$errno, $errstr, 30));
         // dd(Config::get('mail'));
         $name = '学院君';
         $flag = Mail::send('emails.test', ['name' => $name], function ($message) {
