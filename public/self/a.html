@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>
+        </title>
+        <style type="text/css">
+            p	{
+        		margin: 0;
+        	}
+        </style>
+    </head>
+    <body>
+        <p>
+            访问网站的来客会被分配一个唯一的标识符 session id,存放在客户端的 cookie或由 URL 传递（php5在Linux/unix平台可以自动检查cookie状态，如果客户端设置了禁用，则系统自动把session_id附加到url上传递。windows主机则无此功能。）。
+            session变量保存在服务器端（默认以文件方式存储session）
+        </p>
+        <p>
+            http请求用
+        </p>
+        <p>
+            <a href="/self/http/file_get_content.php" target="_blank">
+                file_get_contents
+            </a>
+            以get方式
+        </p>
+        <p>
+            用
+            <a href="/self/http/fopen.php" target="_blank">
+                fopen
+            </a>
+            打开url, 以get方式
+        </p>
+        <p>
+            用
+            <a href="/self/http/file_get_content_post.php" target="_blank">
+                file_get_contents
+            </a>
+            函数,以post方式获取
+            <a href="http://www.cnblogs.com/samson/archive/2011/08/12/2135834.html" target="_blank">
+                链接
+            </a>
+        </p>
+        <p>
+            $data = file_get_contents("php://input"); php://input 是个可以访问请求的原始数据的只读流。 POST 请求的情况下，最好使用 php://input <a href="http://blog.csdn.net/qq_29572055/article/details/51819481" target="_blank">链接</a>
+            <a href="/self/http/test.php" target="_blank">代码</a>
+        </p>
+        <p>
+        	curl获取
+        	get <a href="/self/http/curl_get.php" target="_blank">get</a>
+        	post <a href="/self/http/curl_post.php" target="_blank">post</a>
+        </p>
+    </body>
+</html>
