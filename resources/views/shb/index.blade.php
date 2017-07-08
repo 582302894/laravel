@@ -77,6 +77,12 @@ body p,body a{
             <h1 class="mt20" size="3em">
                 Hello
             </h1>
+            <h5>
+                我的简历地址：
+                <a href="http://www.qq582302894.com/sunhaobo">
+                    www.qq582302894.com/sunhaobo
+                </a>
+            </h5>
             <div style="height: 50px">
             </div>
             <h4>
@@ -333,10 +339,10 @@ body p,body a{
                     </p>
                 </div>
             </div>
-
             <h4 class="experience-title">
-
-                <a href="/self/a.html" target="_blank">面试</a>
+                <a href="/self/a.html" target="_blank">
+                    面试
+                </a>
             </h4>
         </div>
     </div>
