@@ -340,7 +340,7 @@ body p,body a{
                 </div>
             </div>
             <h4 class="experience-title">
-                <a href="/self/a.html" target="_blank">
+                <a href="http://www.qq582302894.com/self/a.html" target="_blank">
                     面试
                 </a>
             </h4>
