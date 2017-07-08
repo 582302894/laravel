@@ -5,9 +5,9 @@
         <title>
         </title>
         <style type="text/css">
-            p	{
-        		margin: 0;
-        	}
+            p   {
+                margin: 0;
+            }
         </style>
     </head>
     <body>
@@ -42,13 +42,42 @@
             </a>
         </p>
         <p>
-            $data = file_get_contents("php://input"); php://input 是个可以访问请求的原始数据的只读流。 POST 请求的情况下，最好使用 php://input <a href="http://blog.csdn.net/qq_29572055/article/details/51819481" target="_blank">链接</a>
-            <a href="/self/http/test.php" target="_blank">代码</a>
+            $data = file_get_contents("php://input"); php://input 是个可以访问请求的原始数据的只读流。 POST 请求的情况下，最好使用 php://input
+            <a href="http://blog.csdn.net/qq_29572055/article/details/51819481" target="_blank">
+                链接
+            </a>
+            <a href="/self/http/test.php" target="_blank">
+                代码
+            </a>
         </p>
         <p>
-        	curl获取
-        	get <a href="/self/http/curl_get.php" target="_blank">get</a>
-        	post <a href="/self/http/curl_post.php" target="_blank">post</a>
+            curl获取
+            get
+            <a href="/self/http/curl_get.php" target="_blank">
+                get
+            </a>
+            post
+            <a href="/self/http/curl_post.php" target="_blank">
+                post
+            </a>
+        </p>
+        <p>
+            http常见
+            <a href="http://tool.oschina.net/commons?type=5" target="_blank">
+                状态码
+            </a>
+        </p>
+        <p>
+            http协议 tcp/ip协议的子集 客户端向服务器端发送请求,服务器响应客户端内容，无状态协议，单次请求非持续连接
+        </p>
+        <p>
+            http协议 由报文(http协议的交互信息)首部(客户端：请求行+请求字段+其他信息，服务器端：状态行+响应字段+其他信息)+空行+报文主体组成。
+            <br/>
+            请求行：
+            <img src="/self/http/1.png"/>
+            首部字段(请求首部，响应首部)
+            <img src="/self/http/2.png"/>
+            <img src="/self/http/3.png" width="500px"/>
         </p>
     </body>
 </html>

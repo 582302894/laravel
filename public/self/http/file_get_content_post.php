@@ -24,13 +24,15 @@
 
 $data = array("name" => 'tim', "content" => 'test');
 $data = http_build_query($data);
+
 $opts = array(
     'http' => array(
         'method'  => "POST",
-        'header'  => "Content-type: application/x-www-form-urlencoded\r\n" .
+        'header'  =>
+        "Host:" . $_SERVER['HTTP_HOST'] . "/self/http/post.php\r\n" .
+        "Content-type: application/x-www-form-urlencoded\r\n" .
         "Content-length:" . strlen($data) . "\r\n" .
-        "Cookie: foo=bar\r\n" .
-        "\r\n",
+        "Cookie: foo=bar\r\n",
         'content' => $data,
     ),
 );

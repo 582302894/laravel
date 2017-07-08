@@ -1,5 +1,5 @@
 
-
+<!-- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,9 +50,50 @@ echo $sFile;
 
 </pre>
 </body>
-</html>
+</html> -->
 
 <?php
+
+
+// POST http://myself.cn/self/http/post.php HTTP/1.1
+// Host: myself.cn
+// Connection: keep-alive
+// Content-Length: 8
+// Cache-Control: max-age=0
+// Origin: http://myself.cn
+// Upgrade-Insecure-Requests: 1
+// User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+// Content-Type: application/x-www-form-urlencoded
+// Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+// Referer: http://myself.cn/self/http/post.php
+// Accept-Encoding: gzip, deflate
+// Accept-Language: zh-CN,zh;q=0.8
+// Cookie: BD_UPN=12314753
+
+// text=123
+
+
+$data=array('text'=>'asdasd');
+$data=http_build_query($data);
+$opts=[
+   'http'=>[
+        'method'=>'POST',
+        'header'=>
+        "Host:myself.cn\r\n".
+        "Content-Type:application/x-www-form-urlencoded\r\n".
+        "Content-Length:".strlen($data)."\r\n",
+        "content"=>$data,
+        'timeout'=>20,
+   ]
+];
+$context=stream_context_create($opts);
+$out=file_get_contents("http://myself.cn/self/http/post.php",false,$context);
+echo '<pre>';
+var_dump($out);
+echo '</pre>';exit();
+
+
+
 // echo '<pre>';
 // var_dump(1);
 // echo '</pre>';exit();
