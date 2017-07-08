@@ -79,7 +79,7 @@ $opts=[
    'http'=>[
         'method'=>'POST',
         'header'=>
-        "Host:myself.cn\r\n".
+        "Host:".$_SERVER['HTTP_HOST']."\r\n".
         "Content-Type:application/x-www-form-urlencoded\r\n".
         "Content-Length:".strlen($data)."\r\n",
         "content"=>$data,
@@ -87,7 +87,7 @@ $opts=[
    ]
 ];
 $context=stream_context_create($opts);
-$out=file_get_contents("http://myself.cn/self/http/post.php",false,$context);
+$out=file_get_contents("http://".$_SERVER['HTTP_HOST']."/self/http/post.php",false,$context);
 echo '<pre>';
 var_dump($out);
 echo '</pre>';exit();
