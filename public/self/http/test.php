@@ -1,5 +1,5 @@
 
-<!-- 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,26 +31,26 @@ $file = file_get_contents('http://www.baidu.com', false, $context);
 echo $file;
 exit();
 
-$data = array("name" => 'tim', "content" => 'test');
-$data = http_build_query($data);
-$opts = array(
-    'http' => array(
-        'method'  => "POST",
-        'header'  => "Content-type: application/x-www-form-urlencoded\r\n" .
-        "Content-length:" . strlen($data) . "\r\n" .
-        "Cookie: foo=bar\r\n" .
-        "\r\n",
-        'content' => $data,
-    ),
-);
-$cxContext = stream_context_create($opts);
-$sFile     = file_get_contents("http://www.qq582302894.com/sunhaobo", false, $cxContext);
+$data=array('text'=>'asdasd');
+$data=http_build_query($data);
+$opts=[
+   'http'=>[
+        'method'=>'POST',
+        'header'=>
+        "Host:".$_SERVER['HTTP_HOST']."\r\n".
+        "Content-Type:application/x-www-form-urlencoded\r\n".
+        "Content-Length:".strlen($data)."\r\n",
+        "content"=>$data,
+        'timeout'=>20,
+   ]
+];
+$context=stream_context_create($opts);
+$out=file_get_contents("http://".$_SERVER['HTTP_HOST']."/self/http/post.php",false,$context);
 
-echo $sFile;
 
 </pre>
 </body>
-</html> -->
+</html>
 
 <?php
 
@@ -72,7 +72,7 @@ echo $sFile;
 
 // text=123
 
-
+exit();
 $data=array('text'=>'asdasd');
 $data=http_build_query($data);
 $opts=[
