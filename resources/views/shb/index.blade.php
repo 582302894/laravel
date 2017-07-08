@@ -339,10 +339,11 @@ body p,body a{
                     </p>
                 </div>
             </div>
-            <h4 class="experience-title">
-                <a href="http://www.qq582302894.com/self/a.html" target="_blank">
+            <h4 class="experience-title overflow-hidden">
+                <a class="" href="http://www.qq582302894.com/self/a.html" target="_blank">
                     面试
                 </a>
+                <div class="mt20"></div>
             </h4>
         </div>
     </div>
