@@ -86,5 +86,63 @@
         <!-- <p>
             反向ajax：服务器端向客户端推送信息 <a href="/self/ajax/talk_client.php">聊天客户端</a> <a href="/self/ajax/talk_server.php">聊天服务器端</a>
         </p> -->
+        <p>
+            mysql表类型：
+            <br/>
+            1）MyISAM默认类型；取代ISAM类型表，表能容纳很大的数据，可移植，提升了索引的压缩效果
+            <br/>
+            2）ISAM，索引不能被压缩需要更多的空间资源，表不能大于4g，不能在不同平台移植，表易分裂降低查询速度；老表类型
+            <br/>
+            3）HELP内存中的表，mysql崩溃或关闭时数据会消失，速度快作为一种临时表；
+            <br/>
+            4）BerkeleyDB，表文件移动困难，不能压缩索引；基本被InnoDB取代，支持事务处理机制,具有良好的并发性能
+            <br/>
+            5）InnoDB事务处理，支持事务处理机制，崩溃后能够立刻恢复，支持外键功能，包括级联删除，具有并发功能
+            <br/>
+            6）MERGE，通过多个MyISAM表组合到一个表的虚拟表
+        </p>
+        <p>
+            索引优化，最左原则，索引不包含NULL值的列，like “%aaa%” 不会使用索引而like “aaa%”可以使用索引，不在列上进行运算，不使用not in和<>,NOT IN可以NOT EXISTS代替，id<>3则可使用id>3 or id<3来代替。
+            不使用索引则会全表扫描数据
+        </p>
+        <p>
+            分表优化：
+            <a href="http://database.51cto.com/art/201608/515550.htm" target="_blank">
+                单表优化
+            </a>
+        </p>
+        <p>
+            并发优化：网页静态化，资源服务器分离，数据库集群（一组服务器）、库表散列，缓存，负载均衡，镜像
+            <a href="http://blog.csdn.net/hardphp/article/details/38036635" target="_blank">
+                链接
+            </a>
+        </p>
+        <!--  <h3>
+            数据结构
+            <a href="" target="_blank">
+                自己
+            </a>
+            <a href="" target="_blank">
+                其他
+            </a>
+        </h3> -->
+        <h3>
+            算法
+            <a href="/self/sf/" target="_blank">
+                自己
+            </a>
+            <a href="http://blog.csdn.net/kirsten_z/article/details/52515573" target="_blank">
+                冒泡、选择、插入、快速
+            </a>
+        </h3>
+        <h3>
+            树
+            <a href="/self/tree/" target="_blank">
+                自己
+            </a>
+            <a href="" target="_blank">
+                其他
+            </a>
+        </h3>
     </body>
 </html>
