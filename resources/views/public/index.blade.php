@@ -82,6 +82,9 @@
         <div class="overflow-hidden">
             <!-- #include('basic.comment') -->
         </div>
+         <div class="overflow-hidden visible-md visible-lg">
+            @include('basic.hotlog')
+        </div>
     </div>
 </div>
 <script type="text/javascript">

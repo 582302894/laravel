@@ -7,7 +7,7 @@ use App\SpiderLog;
 use App\User;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Response;
-
+use App\ViewLog;
 /**
  *
  */
@@ -121,13 +121,23 @@ class IndexController extends Controller
     public function picture($id = 0)
     {
 
+
         $log          = SpiderLog::find($id);
         $log->content = json_decode($log->content, true);
         $log->other   = json_decode($log->other, true);
-        // echo '<pre>';
-        // var_dump($log);
-        // echo '</pre>';
-        // dd($log);
+
+
+        $vnum=ViewLog::find($id);
+        if($vnum==null){
+            $vnum=new ViewLog();
+            $vnum->id=$id;
+            $vnum->vnums=1;
+            $vnum->save();
+        }else{
+            $vnum->vnums++;
+            $vnum->save();
+        }
+
         return view('index.picture', ['log' => $log]);
     }
 }
