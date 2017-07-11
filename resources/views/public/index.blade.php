@@ -70,18 +70,18 @@
             </div>
         </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 hidden-xs hidden-sm">
         <div class="overflow-hidden visible-md visible-lg">
-        @include('basic.time')
+            @include('basic.time')
         </div>
-
-
-        <div class="mt20"><a href="http://www.qq582302894.com/sunhaobo" target="_blank">我的简历</a></div>
-
+        <div class="mt20">
+            <a href="http://www.qq582302894.com/sunhaobo" target="_blank">
+                我的简历
+            </a>
+        </div>
         <div class="overflow-hidden">
-        <!-- #include('basic.comment') -->
+            <!-- #include('basic.comment') -->
         </div>
-
     </div>
 </div>
 <script type="text/javascript">
