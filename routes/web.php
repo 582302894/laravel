@@ -57,6 +57,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::any('admin/picturelog/{dir}',['uses'=>'AdminController@picturelog']);
 
 
+    Route::any('comment/1',['uses'=>'CommentController@list']);
+
 });
 
 // Route::any('user/login', function () {
