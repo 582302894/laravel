@@ -59,6 +59,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::any('comment/1',['uses'=>'CommentController@list']);
 
+
+    Route::any('wx',['uses'=>'WxController@index']);
 });
 
 // Route::any('user/login', function () {
