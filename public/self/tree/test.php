@@ -91,7 +91,28 @@ echo '</pre>';
 	<meta charset="utf-8" />
 </head>
 <body>
-<img src="./1.bmp" />
 <pre>
+function deep($root)
+{
+    global $deep;
+    global $deeepNum;
+    $deep++;
+    if (!isset($deeepNum[$deep])) {
+        $deeepNum[$deep] = 1;
+    } else {
+        $deeepNum[$deep]++;
+    }
+    if (!empty($root->left)) {
+        deep($root->left);
+    }
+    if (!empty($root->right)) {
+
+        deep($root->right);
+    }
+    $deep--;
+
+}
+<img src="./1.bmp" />
+
 </body>
 </html>
