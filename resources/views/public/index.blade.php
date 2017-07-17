@@ -70,8 +70,21 @@
             </div>
         </div>
     </div>
-    <div class="visible-md visible-lg col-md-2">
-        @include('basic.time')
+    <div class="col-md-2 hidden-xs hidden-sm">
+        <div class="overflow-hidden visible-md visible-lg">
+            @include('basic.time')
+        </div>
+        <div class="mt20">
+            <a href="http://www.qq582302894.com/sunhaobo" target="_blank">
+                我的简历
+            </a>
+        </div>
+        <div class="overflow-hidden">
+            <!-- #include('basic.comment') -->
+        </div>
+         <div class="overflow-hidden visible-md visible-lg">
+            @include('basic.hotlog')
+        </div>
     </div>
 </div>
 <script type="text/javascript">

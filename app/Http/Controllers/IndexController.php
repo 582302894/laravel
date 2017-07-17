@@ -5,7 +5,9 @@ use App\Help\Net;
 use App\Http\Controllers;
 use App\SpiderLog;
 use App\User;
-
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Http\Response;
+use App\ViewLog;
 /**
  *
  */
@@ -71,10 +73,25 @@ class IndexController extends Controller
             $pictures[1] = $temp;
         }
         // return view('public.index', ['pictures' => $pictures, 'logs' => $logs]);
+        //
+        //
+
+        if (!Cookie::has('comment_name')) {
+            $name1 = ['路人', '小二', '客官', '掌柜'];
+            $name2 = ['甲', '乙', '丙', '丁'];
+            $cookie=Cookie::forever('comment_name', $name1[array_rand($name1)] . $name2[array_rand($name2)]);
+            $response=new Response();
+            $response->withCookie($cookie);
+            return $response;
+            // Response::make()->withCookie($cookie);
+            
+        }
+
         return view('public.index', [
-            'one'  => [$pictures[1], $pictures[2]],
-            'two'  => [$pictures[3], $pictures[4]],
-            'logs' => $logs,
+            'one'          => [$pictures[1], $pictures[2]],
+            'two'          => [$pictures[3], $pictures[4]],
+            'logs'         => $logs,
+            'comment_name' => Cookie::get('comment_name'),
         ]);
     }
     public function lists()
@@ -104,13 +121,23 @@ class IndexController extends Controller
     public function picture($id = 0)
     {
 
+
         $log          = SpiderLog::find($id);
         $log->content = json_decode($log->content, true);
         $log->other   = json_decode($log->other, true);
-        // echo '<pre>';
-        // var_dump($log);
-        // echo '</pre>';
-        // dd($log);
+
+
+        $vnum=ViewLog::find($id);
+        if($vnum==null){
+            $vnum=new ViewLog();
+            $vnum->id=$id;
+            $vnum->vnums=1;
+            $vnum->save();
+        }else{
+            $vnum->vnums++;
+            $vnum->save();
+        }
+
         return view('index.picture', ['log' => $log]);
     }
 }
