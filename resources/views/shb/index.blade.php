@@ -34,8 +34,6 @@
     height: 15px;
 }
 body{
-    /*background-color: #e7e7e7 !important;*/
-
     background-color: #283a46 !important;
 }
 .right{
@@ -117,10 +115,28 @@ body p,body a{
                 </div>
                 <div class="skill">
                     <p class="skill-label-name">
-                        linux,ubuntu
+                        html,div,css
                     </p>
                     <div class="col-md-12 col-sm-12 skill-label">
-                        <div class="skill-label-num" style="width: 50%">
+                        <div class="skill-label-num" style="width: 70%">
+                        </div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <p class="skill-label-name">
+                        javascript,jquery
+                    </p>
+                    <div class="col-md-12 col-sm-12 skill-label">
+                        <div class="skill-label-num" style="width: 70%">
+                        </div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <p class="skill-label-name">
+                        sql,mysql
+                    </p>
+                    <div class="col-md-12 col-sm-12 skill-label">
+                        <div class="skill-label-num" style="width: 80%">
                         </div>
                     </div>
                 </div>
@@ -144,55 +160,20 @@ body p,body a{
                 </div>
                 <div class="skill">
                     <p class="skill-label-name">
+                        linux,ubuntu
+                    </p>
+                    <div class="col-md-12 col-sm-12 skill-label">
+                        <div class="skill-label-num" style="width: 50%">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <p class="skill-label-name">
                         lnmp
                     </p>
                     <div class="col-md-12 col-sm-12 skill-label">
                         <div class="skill-label-num" style="width: 50%">
-                        </div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <p class="skill-label-name">
-                        html,div,css
-                    </p>
-                    <div class="col-md-12 col-sm-12 skill-label">
-                        <div class="skill-label-num" style="width: 70%">
-                        </div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <p class="skill-label-name">
-                        javascript,jquery
-                    </p>
-                    <div class="col-md-12 col-sm-12 skill-label">
-                        <div class="skill-label-num" style="width: 70%">
-                        </div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <p class="skill-label-name">
-                        c,java
-                    </p>
-                    <div class="col-md-12 col-sm-12 skill-label">
-                        <div class="skill-label-num" style="width: 50%">
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="skill">
-                    <p class="skill-label-name">
-                        c,java
-                    </p>
-                    <div class="col-md-12 col-sm-12 skill-label">
-                        <div class="skill-label-num" style="width: 50%">
-                        </div>
-                    </div>
-                </div> -->
-                <div class="skill">
-                    <p class="skill-label-name">
-                        sql,mysql
-                    </p>
-                    <div class="col-md-12 col-sm-12 skill-label">
-                        <div class="skill-label-num" style="width: 80%">
                         </div>
                     </div>
                 </div>
@@ -205,6 +186,27 @@ body p,body a{
                         </div>
                     </div>
                 </div>
+
+               <!--  <div class="skill">
+                    <p class="skill-label-name">
+                        c,java
+                    </p>
+                    <div class="col-md-12 col-sm-12 skill-label">
+                        <div class="skill-label-num" style="width: 50%">
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="skill">
+                    <p class="skill-label-name">
+                        c,java
+                    </p>
+                    <div class="col-md-12 col-sm-12 skill-label">
+                        <div class="skill-label-num" style="width: 50%">
+                        </div>
+                    </div>
+                </div> -->
+
+
             </div>
             <div class="contact">
                 <h4 class="mt20">
