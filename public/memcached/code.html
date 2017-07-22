@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+	<title></title>
     <meta charset="utf-8">
 </head>
 <body>
-<form action="" method="post" id="">
-缓存一个值<input type="text" name="key">
-<input type="submit" name="submit">
-<br/>
-<a href="/memcached/code.html">代码</a>
-</form>
-</body>
-</html>
-<?php
+<pre>
 error_reporting(E_ALL);
 try {
 
@@ -25,9 +17,7 @@ try {
     }
 
 } catch (Exception $e) {
-    echo '<pre>';
     var_dump($e);
-    echo '</pre>';
     exit();
 }
 
@@ -41,10 +31,12 @@ if (isset($_POST['key'])) {
     if ($value == false) {
         $value = '';
     }
-    $value = $ip . "缓存了一个值" . $_POST['key'] . "<br/>" . $value;
+    $value = $ip . "缓存了一个值" . $_POST['key'] . "" . $value;
     $mc->set('test_mc_key', $value, false, 0);
     header("Location:http://{$_SERVER['HTTP_HOST']}/memcached/test.php");
     exit();
 } else {
     echo $value;
 }
+</body>
+</html>
