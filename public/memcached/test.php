@@ -38,8 +38,8 @@ if (isset($_POST['key'])) {
     if ($value == false) {
         $value = '';
     }
-    $value .= $ip . "缓存了一个值" . $_POST['key'] . "<br/>";
-    $mc->set('test_mc_key', $value, false, 3600);
+    $value = $ip . "缓存了一个值" . $_POST['key'] . "<br/>" . $value;
+    $mc->set('test_mc_key', $value, false, 0);
     header("Location:http://{$_SERVER['HTTP_HOST']}/memcached/test.php");
     exit();
 } else {
