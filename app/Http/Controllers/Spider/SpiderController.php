@@ -68,86 +68,75 @@ class SpiderController extends Controller
     public function picture()
     {
 
-        if (Session::has('spider_picture_time') || Session::get('spider_picture_data') == null || Session::get('spider_picture_time') < strtotime('-10 minute')) {
-            $tout     = new ToutController();
-            $pictures = $tout->picture();
+        $tout     = new ToutController();
+        $pictures = $tout->picture();
 
-            Session::put('spider_picture_time', time());
-            Session::put('spider_picture_data', $pictures);
+        Session::put('spider_picture_time', time());
+        Session::put('spider_picture_data', $pictures);
 
-            if (!isset($pictures['data'])) {
-                dd($pictures);
+        if (!isset($pictures['data'])) {
+            dd($pictures);
+        }
+
+        $logs = [];
+        $keys = [0];
+        foreach ($pictures['data'] as $key => $picture) {
+            try {
+                $size = getimagesize($picture['image_url']);
+            } catch (Exception $e) {
+                continue;
             }
 
-            $logs = [];
-            $keys = [0];
-            foreach ($pictures['data'] as $key => $picture) {
-                try {
-                    $size = getimagesize($picture['image_url']);    
-                } catch (Exception $e) {
-                    continue;
-                }
+            $picture['img'] = [
+                'width'  => $size[0],
+                'height' => $size[1],
+            ];
 
+            $log          = new SpiderLog();
+            $log->content = json_encode($picture);
+            $log->key     = md5($picture['title']);
+            $keys[]       = $log->key;
+            $log->type    = 2;
+            $groupId      = $picture['group_id'];
 
-                $picture['img'] = [
-                    'width'  => $size[0],
-                    'height' => $size[1],
-                ];
-
-                $log          = new SpiderLog();
-                $log->content = json_encode($picture);
-                $log->key     = md5($picture['title']);
-                $keys[]       = $log->key;
-                $log->type    = 2;
-                $groupId      = $picture['group_id'];
-
-                $listsStr     = $tout->picturelists($groupId);
-                if($listsStr==false){
-                    continue;
-                }
-                $log->other = $listsStr;
-
-                $logs[$log->key] = $log;
-
-                $imgs[$log->key]=[
-                    $log->key,
-                    $picture['title'],
-                    $picture['image_url'],
-                ];
-                
-                Net::saveImg($picture['image_url']);
-
-
+            $listsStr = $tout->picturelists($groupId);
+            if ($listsStr == false) {
+                continue;
             }
+            $log->other = $listsStr;
 
+            $logs[$log->key] = $log;
 
-            if(isset($imgs)){
-                $year=date('Y');
-                $month=date('m');
-                $day=date('d');
+            $imgs[$log->key] = [
+                $log->key,
+                $picture['title'],
+                $picture['image_url'],
+            ];
 
-                $filename=date('His');
+        }
 
-                $path = "spider/picture/{$year}/{$month}/{$day}/".$filename;
-                
-                $content=json_encode($imgs);
-                $bool=Storage::disk('public')->put($path, $content);
+        if (isset($imgs)) {
+            $year  = date('Y');
+            $month = date('m');
+            $day   = date('d');
+
+            $filename = date('His');
+
+            $path = "spider/picture/{$year}/{$month}/{$day}/" . $filename;
+
+            $content = json_encode($imgs);
+            $bool    = Storage::disk('public')->put($path, $content);
+        }
+        $result = array();
+        if (isset($keys)) {
+            $result = SpiderLog::whereIn('key', $keys)->pluck('key')->all();
+        }
+        foreach ($logs as $key => $log) {
+            if (!in_array($key, $result)) {
+                $log->save();
+                $url = Net::saveImg($imgs[$key][2]);
+                echo 'save';
             }
-            $result = array();
-            if (isset($keys)) {
-                $result = SpiderLog::whereIn('key', $keys)->pluck('key')->all();
-            }
-            foreach ($logs as $key => $log) {
-                if (!in_array($key, $result)) {
-                    $log->save();
-                    echo 'save';
-                }
-            }
-
-            // dd($logs);
-
-        } else {
-            $videos = Session::get('spider_picture_data');
         }
     }
 

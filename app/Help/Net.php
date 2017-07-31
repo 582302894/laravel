@@ -59,13 +59,11 @@ class Net
     public static function saveImg($url){
 
         $key=md5($url);
-
         if(Storage::disk('public')->exists("img/{$key}")){
-            return asset("storage/img/{$key}");
+            return asset("storage/img/{$key}");   
         }
 
-        Storage::disk('public')->put("img/{$key}", file_get_contents($url));
-
+        $flag=Storage::disk('public')->put("img/{$key}", file_get_contents($url));
         return $url;
 
 
