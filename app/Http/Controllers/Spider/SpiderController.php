@@ -114,6 +114,8 @@ class SpiderController extends Controller
                     $picture['title'],
                     $picture['image_url'],
                 ];
+                
+                Net::saveImg($picture['image_url']);
 
 
             }
@@ -130,7 +132,6 @@ class SpiderController extends Controller
                 
                 $content=json_encode($imgs);
                 $bool=Storage::disk('public')->put($path, $content);
-               
             }
             $result = array();
             if (isset($keys)) {
