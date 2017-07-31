@@ -1,6 +1,10 @@
 <?php
 
 try {
+	if(!class_exists('Redis')){
+		echo 'not exist class Redis';
+		exit();
+	}
     $redis = new Redis();
     $redis->connect('127.0.0.1', 6379);
     echo '<pre>';
