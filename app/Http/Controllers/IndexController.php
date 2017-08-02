@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Response;
 use App\ViewLog;
+use App\IpLog;
 /**
  *
  */
@@ -112,6 +113,10 @@ class IndexController extends Controller
         $log->content = json_decode($log->content, true);
         $log->other   = json_decode($log->other, true);
 
+         $self = array_unique(IpLog::where(['type' => 3])->get()->pluck(['ip'])->all());
+        if (in_array($_SERVER['REMOTE_ADDR'], $self)) {
+            return view('index.picture', ['log' => $log]);
+        }
 
         $vnum=ViewLog::find($id);
         if($vnum==null){

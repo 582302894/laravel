@@ -21,7 +21,7 @@ echo $sFile;
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+    <title></title>
 </head>
 <body>
 <pre>

@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class IpLog extends Model
 {
 
+    /**
+     * type 1 user.login 2 用户访问日志 3,self
+     */
     protected $table      = 'ip_log';
     protected $primaryKey = 'id';
     public $timestamps    = true;

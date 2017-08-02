@@ -101,3 +101,7 @@ Route::any('music',['uses'=>'Spider\MusicController@music','music']);
 
 
 Route::any('sunhaobo',['uses'=>'ShbController@index']);
+
+Route::any('jsiplogs',['uses'=>'IpController@jsiplogs']);
+Route::any('iplogs',['uses'=>'IpController@iplogs']);
+Route::any('isme',['uses'=>'IpController@isme']);

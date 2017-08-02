@@ -152,7 +152,7 @@ class UserController extends Controller
     {
 
         // User::find(Auth::user()->all()->first()->uid)->name
-        \App\IpLog::record('user.login');
+        // \App\IpLog::record('user.login');
 
         if(Auth::check()){
             return redirect('index');
