@@ -1,6 +1,10 @@
 @extends('basic.template1')
 
 
+@section('title')
+{{$log->content['title']}}
+@stop
+
 @section('template1')
 <div class="container-fluid">
     <div class="col-md-8 col-md-offset-1 col-sm-12 col-xs-12 overflow-hidden p10 mb10" style="border: 1px solid rgba(191, 185, 185, 0.42);">
