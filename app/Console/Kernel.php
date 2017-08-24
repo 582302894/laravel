@@ -31,12 +31,12 @@ class Kernel extends ConsoleKernel
             $spider=new SpiderController();
             $spider->picture();
             // return 'hello';
-        })->everyMinute();
+        })->everyTenMinutes();
 
-        $schedule->call(function(){
-           $html=https('http://www.qq582302894.com');
-           echo strlen($html);
-        })->hourly();
+        // $schedule->call(function(){
+        //    $html=https('http://www.qq582302894.com');
+        //    echo strlen($html);
+        // })->hourly();
 
     }
 
